@@ -18,7 +18,7 @@ pipeline {
     }
     stage("Deliver") {
       steps {
-        sh "Deploying to Production! Please work !"
+        sh "echo 'Deploying to Production\! Please work\!'"
       }
     }
   }
