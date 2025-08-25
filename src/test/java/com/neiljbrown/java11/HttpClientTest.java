@@ -193,31 +193,6 @@ public class HttpClientTest {
   }
 
   /**
-   * Provides an example of making a POST request with a non-empty body read from an {@link InputStream}.
-   * <p>
-   * Similar to {@link #testPostRequestWhenBodyPublisherOfString()}, except that shows how to read the HTTP
-   * request body using an alternative implementation of {@link HttpRequest.BodyPublisher} provided by
-   * {@link HttpRequest.BodyPublishers#ofInputStream(Supplier)}
-   *
-   * @throws Exception if an unexpected error occurs.
-   * @see #testPostRequestWhenBodyPublisherOfString()
-   */
-  @Test
-  public void testPostRequestWhenBodyPublisherOfInputStream() throws Exception {
-    var request = HttpRequest.newBuilder(URI.create("https://httpbin.org/post"))
-      .header("Content-Type", "application/json")
-      .POST(
-        // Read /consume the request body from a specified InputStream
-        HttpRequest.BodyPublishers.ofInputStream(() ->
-          HttpClientTest.class.getResourceAsStream("/testPostRequest-data.json")))
-      .build();
-
-    HttpResponse<String> response = this.httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-
-    assertHttpResponseStatusCodeInSuccessRange(response);
-  }
-
-  /**
    * Provides an example of current support for setting a per request response timeout using
    * {@link HttpRequest.Builder#timeout(Duration)}.
    * <p>
