@@ -102,7 +102,7 @@ public class HttpClientTest {
         // Set a connection timeout.
         // NOTE - There isn't currently an option to set a default read timeout (at least not via the builder) for
         // the HttpClient, although one can be set per request.
-        .connectTimeout(Duration.ofMillis(1000))
+        .connectTimeout(Duration.ofMillis(5000))
         // Proxy - The client can also be configured to use a proxy via the proxy(...) method.
         // etc.
         .build();
